@@ -1,4 +1,4 @@
-from rest_framework import generics
+from rest_framework import generics, pagination
 from apps.logistics_services.models.services import LogisticsService
 from api.logistics_services.serializers.logistics_services import (
     LogisticsServiceSerializer,
@@ -24,3 +24,5 @@ class LogisticsServicesListView(generics.ListAPIView):
             "icontains",
         ],
     }
+
+    pagination_class = pagination.LimitOffsetPagination
