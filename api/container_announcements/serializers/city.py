@@ -9,6 +9,8 @@ class CitySerializer(serializers.Serializer):
 
     country = CountrySerializer(many=False, read_only=True)
 
+    country_id = serializers.IntegerField(read_only=True, source="country.id")
+
     class Meta:
         model = "City"
-        fields = ["id", "name", "country", "created_at"]
+        fields = ["id", "name", "country", "created_at", "country_id"]
