@@ -198,6 +198,9 @@ class ContainerProviderAdmin(TranslationAdmin):
                     "description",
                     "phone",
                     "site",
+                    "telegram",
+                    "instagram",
+                    "watsapp",
                 )
             },
         ),

@@ -21,7 +21,17 @@ class LogisticsServiceTypeAdmin(TranslationAdmin):
 @admin.register(LogisticsService)
 class LogisticsServiceAdmin(TranslationAdmin):
     inlines = [LogisticsServiceImageAdmin]
-    list_display = ["id", "name", "description", "service_type", "phone", "site"]
+    list_display = [
+        "id",
+        "name",
+        "description",
+        "service_type",
+        "phone",
+        "site",
+        "telegram",
+        "instagram",
+        "watsapp",
+    ]
     search_fields = ["name", "description", "phone", "site"]
     list_filter = ["service_type", "phone", "site", "name"]
     fieldsets = [
@@ -34,6 +44,9 @@ class LogisticsServiceAdmin(TranslationAdmin):
                     "service_type",
                     "phone",
                     "site",
+                    "telegram",
+                    "instagram",
+                    "watsapp",
                 )
             },
         ),

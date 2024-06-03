@@ -17,6 +17,16 @@ class LogisticsService(TimeModelMixin):
     )
     phone = PhoneNumberField(_("Phone"), blank=False, null=False)
     site = models.CharField(_("Site"), max_length=255, blank=True, null=True)
+    images = models.ManyToOneRel(
+        to="LogisticsServiceImage",
+        field="service",
+        field_name="images",
+        on_delete=models.CASCADE,
+    )
+
+    telegram = models.CharField(_("Telegram"), max_length=255, blank=True, null=True)
+    instagram = models.CharField(_("Instagram"), max_length=255, blank=True, null=True)
+    watsapp = models.CharField(_("Watsapp"), max_length=255, blank=True, null=True)
 
     class Meta:
         ordering = ["id", "created_at"]
@@ -66,4 +76,5 @@ class LogisticsServiceImage(TimeModelMixin):
         verbose_name_plural = _("Logistics Service Images")
 
     def __str__(self):
-        return "%s" % self.service.name
+        # generate image url with domain
+        return "%s" % self.image.url

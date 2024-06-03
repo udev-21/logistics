@@ -14,6 +14,10 @@ class LogisticsServiceSerializer(serializers.Serializer):
     phone = PhoneNumberField()
     site = serializers.CharField()
     created_at = serializers.DateTimeField()
+    telgeram = serializers.CharField()
+    instagram = serializers.CharField()
+    watsapp = serializers.CharField()
+    images = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = LogisticsService
@@ -24,5 +28,8 @@ class LogisticsServiceSerializer(serializers.Serializer):
             "service_type",
             "phone",
             "site",
+            "telgeram",
+            "instagram",
+            "watsapp",
             "created_at",
         ]

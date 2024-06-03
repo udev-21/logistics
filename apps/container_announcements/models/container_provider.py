@@ -13,6 +13,9 @@ class ContainerProvider(TimeModelMixin):
 
     phone = PhoneNumberField(_("Phone"), blank=False, null=False)
     site = models.CharField(_("Site"), max_length=255, blank=True, null=True)
+    telegram = models.CharField(_("Telegram"), max_length=255, blank=True, null=True)
+    instagram = models.CharField(_("Instagram"), max_length=255, blank=True, null=True)
+    watsapp = models.CharField(_("Watsapp"), max_length=255, blank=True, null=True)
 
     class Meta:
         ordering = ["id", "created_at"]

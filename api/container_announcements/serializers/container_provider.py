@@ -10,8 +10,21 @@ class ContainerProviderSerializer(serializers.Serializer):
     description = serializers.CharField()
     phone = PhoneNumberField()
     site = serializers.CharField()
+    telegram = serializers.CharField()
+    instagram = serializers.CharField()
+    watsapp = serializers.CharField()
     created_at = serializers.DateTimeField()
 
     class Meta:
         model = ContainerProvider
-        fields = ["id", "name", "description", "phone", "site", "created_at"]
+        fields = [
+            "id",
+            "name",
+            "description",
+            "phone",
+            "site",
+            "telegram",
+            "instagram",
+            "watsapp",
+            "created_at",
+        ]
