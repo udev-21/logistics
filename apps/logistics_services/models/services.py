@@ -7,7 +7,7 @@ from django.utils.safestring import mark_safe
 
 
 def logistics_image_upload_location(instance, filename):
-    return f"logistics_services/{instance.service.name}/{filename}"
+    return f"logistics_services/{filename}"
 
 
 class LogisticsService(TimeModelMixin):
