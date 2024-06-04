@@ -37,6 +37,7 @@ class ContainerAnnouncementAdmin(admin.ModelAdmin):
             {
                 "fields": (
                     "provider",
+                    ("price", "currency", "is_by_agreement"),
                     "schedule_date_from",
                     "schedule_date_to",
                     "from_city",
@@ -44,6 +45,7 @@ class ContainerAnnouncementAdmin(admin.ModelAdmin):
                     "container_type",
                     "container_form_type",
                     "shipping_type",
+
                 )
             },
         ),
@@ -214,7 +216,6 @@ admin.site.register(ContainerFormType, ContainerFormTypeAdmin)
 admin.site.register(Country, CountryAdmin)
 admin.site.register(City, CityAdmin)
 admin.site.register(ContainerProvider, ContainerProviderAdmin)
-
 
 # class UserAdmin(BaseUserAdmin):
 #     """Admin view of User model"""
