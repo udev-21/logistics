@@ -6,12 +6,11 @@ from api.logistics_services.serializers.logistics_service_types import (
 from phonenumber_field.serializerfields import PhoneNumberField
 
 
-class LogisticsServiceImageSerializer(serializers.Serializer):
-    id = serializers.IntegerField()
+class LogisticsServiceImageSerializer(serializers.SerializerMetaclass):
 
     class Meta:
         model = LogisticsServiceImage
-        fields = '__all__'
+        fields = ['id', 'image']
 
 
 class LogisticsServiceSerializer(serializers.Serializer):
