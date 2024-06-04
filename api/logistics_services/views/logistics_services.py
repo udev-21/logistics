@@ -26,5 +26,3 @@ class LogisticsServicesListView(generics.ListAPIView):
             "icontains",
         ],
     }
-
-    pagination_class = pagination.LimitOffsetPagination
