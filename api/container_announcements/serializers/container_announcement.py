@@ -13,6 +13,7 @@ class ContainerAnnouncementSerializer(serializers.Serializer):
     to_city = CitySerializer(many=False, read_only=True)
     container_type = ContainerTypeSerializer(many=False, read_only=True)
     container_form_type = ContainerFormTypeSerializer(many=False, read_only=True)
+    shipping_type = ShippingTypeSerializer(many=False)
     created_at = serializers.DateTimeField()
 
     class Meta:
@@ -26,5 +27,6 @@ class ContainerAnnouncementSerializer(serializers.Serializer):
             "to_city",
             "container_type",
             "container_form_type",
+            "shipping_type",
             "created_at",
         ]
