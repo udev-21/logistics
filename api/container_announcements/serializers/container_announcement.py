@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from api.base.serializers.currency import CurrencySerializer
 from apps.container_announcements.models import ContainerAnnouncement
 from api.container_announcements.serializers import *
 
@@ -10,7 +11,7 @@ class ContainerAnnouncementSerializer(serializers.Serializer):
     schedule_date_from = serializers.DateTimeField()
     schedule_date_to = serializers.DateTimeField()
     price = serializers.IntegerField()
-    currency = serializers.CharField()
+    currency = CurrencySerializer(many=False)
     is_by_agreement = serializers.BooleanField()
     from_city = CitySerializer(many=False, read_only=True)
     to_city = CitySerializer(many=False, read_only=True)

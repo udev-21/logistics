@@ -1,12 +1,11 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from apps.base.models import Currency
 from apps.core.models import TimeModelMixin
 
 
 class ContainerAnnouncement(TimeModelMixin):
-    TYPE_CURRENCY = (('uzs', 'UZS'),
-                     ('usd', 'USD'),)
     provider = models.ForeignKey(
         "ContainerProvider",
         on_delete=models.PROTECT,
@@ -16,7 +15,11 @@ class ContainerAnnouncement(TimeModelMixin):
     schedule_date_from = models.DateTimeField(_("Schedule Date From"))
     schedule_date_to = models.DateTimeField(_("Schedule Date To"))
     price = models.PositiveBigIntegerField(default=0)
-    currency = models.CharField(choices=TYPE_CURRENCY, max_length=100, default='uzs')
+    currency = models.ForeignKey(
+        Currency,
+        on_delete=models.SET_NULL, blank=True, null=True,
+        related_name="container_announcements_from_city",
+    )
     is_by_agreement = models.BooleanField(default=False)
     from_city = models.ForeignKey(
         "City",
