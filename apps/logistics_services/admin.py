@@ -1,7 +1,6 @@
 from modeltranslation.admin import TranslationAdmin
 from django.contrib import admin
 from apps.logistics_services.models.services import *
-from django.utils.html import format_html
 
 
 class LogisticsServiceImageAdmin(admin.TabularInline):
@@ -44,6 +43,7 @@ class LogisticsServiceAdmin(TranslationAdmin):
                     "service_type",
                     "phone",
                     "site",
+                    "image",
                     "telegram",
                     "instagram",
                     "watsapp",
