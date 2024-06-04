@@ -7,7 +7,6 @@ from phonenumber_field.serializerfields import PhoneNumberField
 
 
 class LogisticsServiceImageSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = LogisticsServiceImage
         fields = ['id', 'image']
@@ -24,7 +23,7 @@ class LogisticsServiceSerializer(serializers.Serializer):
     telegram = serializers.CharField()
     instagram = serializers.CharField()
     watsapp = serializers.CharField()
-    images = LogisticsServiceImageSerializer(many=True)
+    image = serializers.ImageField()
 
     class Meta:
         model = LogisticsService
@@ -38,6 +37,6 @@ class LogisticsServiceSerializer(serializers.Serializer):
             "telegram",
             "instagram",
             "watsapp",
+            "image",
             "created_at",
-            "images",
         ]

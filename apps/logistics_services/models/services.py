@@ -6,6 +6,10 @@ from phonenumber_field.modelfields import PhoneNumberField
 from django.utils.safestring import mark_safe
 
 
+def logistics_image_upload_location(instance, filename):
+    return f"logistics_services/{instance.service.name}/{filename}"
+
+
 class LogisticsService(TimeModelMixin):
     name = models.CharField(_("Name"), max_length=255)
     description = models.TextField(_("Description"))
@@ -17,13 +21,8 @@ class LogisticsService(TimeModelMixin):
     )
     phone = PhoneNumberField(_("Phone"), blank=False, null=False)
     site = models.CharField(_("Site"), max_length=255, blank=True, null=True)
-    images = models.ManyToOneRel(
-        to="LogisticsServiceImage",
-        field="service",
-        field_name="images",
-        on_delete=models.CASCADE,
-    )
-
+    image = models.ImageField(_("Image"), upload_to=logistics_image_upload_location,
+                              default='logistics_services/default.png')
     telegram = models.CharField(_("Telegram"), max_length=255, blank=True, null=True)
     instagram = models.CharField(_("Instagram"), max_length=255, blank=True, null=True)
     watsapp = models.CharField(_("Watsapp"), max_length=255, blank=True, null=True)
@@ -49,10 +48,6 @@ class LogisticsServiceType(TimeModelMixin):
 
     def __str__(self):
         return "%s" % self.name
-
-
-def logistics_image_upload_location(instance, filename):
-    return f"logistics_services/{instance.service.name}/{filename}"
 
 
 class LogisticsServiceImage(TimeModelMixin):
