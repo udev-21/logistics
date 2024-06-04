@@ -1,9 +1,17 @@
 from rest_framework import serializers
-from apps.logistics_services.models.services import LogisticsService
+from apps.logistics_services.models.services import LogisticsService, LogisticsServiceImage
 from api.logistics_services.serializers.logistics_service_types import (
     LogisticsServiceTypeSerializer,
 )
 from phonenumber_field.serializerfields import PhoneNumberField
+
+
+class LogisticsServiceImageSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+
+    class Meta:
+        model = LogisticsServiceImage
+        fields = '__all__'
 
 
 class LogisticsServiceSerializer(serializers.Serializer):
@@ -17,7 +25,7 @@ class LogisticsServiceSerializer(serializers.Serializer):
     telegram = serializers.CharField()
     instagram = serializers.CharField()
     watsapp = serializers.CharField()
-    images = serializers.StringRelatedField(many=True)
+    images = LogisticsServiceImageSerializer(many=True)
 
     class Meta:
         model = LogisticsService
@@ -32,4 +40,5 @@ class LogisticsServiceSerializer(serializers.Serializer):
             "instagram",
             "watsapp",
             "created_at",
+            "images",
         ]
