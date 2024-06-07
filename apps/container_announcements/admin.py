@@ -72,7 +72,6 @@ class ContainerTypeAdmin(TranslationAdmin):
             "Container Type",
             {
                 "fields": (
-                    "id",
                     "name",
                 )
             },
