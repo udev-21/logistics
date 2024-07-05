@@ -8,3 +8,11 @@ class AbstractNameTranslationOption(TranslationOptions):
 
 
 translator.register(Currency, AbstractNameTranslationOption)
+
+
+class AboutCompanyNameTranslationOption(TranslationOptions):
+    fields = ("title", 'desc')
+    required_languages = ("en", "uz", "ru")
+
+
+translator.register(AboutCompany, AboutCompanyNameTranslationOption)

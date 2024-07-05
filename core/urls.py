@@ -25,7 +25,6 @@ from rest_framework import permissions
 from django.conf import settings
 from django.conf.urls.static import static
 
-
 schema_view = get_schema_view(
     openapi.Info(
         title="Logistics API",
@@ -40,6 +39,7 @@ urlpatterns = [
     path("api/container-announcements/", include("api.container_announcements.urls")),
     path("api/logistics-services/", include("api.logistics_services.urls")),
     path("api/container-tracking/", include("api.container_tracking.urls")),
+    path("api/base/", include("api.base.urls")),
     path(
         "api-docs/",
         schema_view.with_ui("swagger", cache_timeout=0),

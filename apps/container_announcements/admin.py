@@ -39,7 +39,9 @@ class ContainerAnnouncementAdmin(admin.ModelAdmin):
                     "provider",
                     ("price", "currency", "is_by_agreement"),
                     "schedule_date_from",
+                    "schedule_time_from",
                     "schedule_date_to",
+                    "schedule_time_to",
                     "from_city",
                     "to_city",
                     "container_type",
@@ -97,7 +99,7 @@ class ShippingTypeAdmin(TranslationAdmin):
     fieldsets = [
         (
             "Shipping Type",
-            {"fields": ("name",)},
+            {"fields": ("name", "bg_color",)},
         ),
     ]
 

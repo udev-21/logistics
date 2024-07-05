@@ -6,6 +6,7 @@ from apps.core.models import TimeModelMixin
 
 class ShippingType(TimeModelMixin):
     name = models.CharField(_("Name"), max_length=255)
+    bg_color = models.CharField(_("Color"), max_length=255)
 
     class Meta:
         ordering = ["id", "created_at"]

@@ -8,8 +8,10 @@ from api.container_announcements.serializers import *
 class ContainerAnnouncementSerializer(serializers.Serializer):
     id = serializers.IntegerField()
     provider = ContainerProviderSerializer(many=False, read_only=True)
-    schedule_date_from = serializers.DateTimeField()
-    schedule_date_to = serializers.DateTimeField()
+    schedule_date_from = serializers.DateField()
+    schedule_time_from = serializers.TimeField()
+    schedule_date_to = serializers.DateField()
+    schedule_time_to = serializers.TimeField()
     price = serializers.IntegerField()
     currency = CurrencySerializer(many=False)
     is_by_agreement = serializers.BooleanField()
@@ -26,7 +28,9 @@ class ContainerAnnouncementSerializer(serializers.Serializer):
             "id",
             "provider",
             "schedule_date_from",
+            "schedule_time_from",
             "schedule_date_to",
+            "schedule_time_to",
             "price",
             "currency",
             "is_by_agreement",

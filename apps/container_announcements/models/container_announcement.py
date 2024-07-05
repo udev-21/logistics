@@ -12,8 +12,10 @@ class ContainerAnnouncement(TimeModelMixin):
         related_name="container_announcements",
     )
 
-    schedule_date_from = models.DateTimeField(_("Schedule Date From"))
-    schedule_date_to = models.DateTimeField(_("Schedule Date To"))
+    schedule_date_from = models.DateField(_("Schedule Date From"))
+    schedule_time_from = models.TimeField(_("Schedule Time From"))
+    schedule_date_to = models.DateField(_("Schedule Date To"))
+    schedule_time_to = models.TimeField(_("Schedule Time To"))
     price = models.PositiveBigIntegerField(default=0)
     currency = models.ForeignKey(
         Currency,
