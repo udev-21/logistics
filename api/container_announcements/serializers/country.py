@@ -6,10 +6,10 @@ from apps.container_announcements.models import Country
 
 class CityListSerializer(serializers.Serializer):
     id = serializers.IntegerField()
+    lan = serializers.SerializerMethodField()
     name = serializers.CharField(max_length=255)
     created_at = serializers.DateTimeField()
     country_id = serializers.IntegerField(read_only=True, source="country.id")
-    lan = serializers.SerializerMethodField()
 
     class Meta:
         model = "City"
@@ -26,10 +26,10 @@ class CityListSerializer(serializers.Serializer):
 
 class CountrySerializer(serializers.Serializer):
     id = serializers.IntegerField()
+    lan = serializers.SerializerMethodField()
     name = serializers.CharField(max_length=255)
     created_at = serializers.DateTimeField()
     cities = CityListSerializer(many=True)
-    lan = serializers.SerializerMethodField()
 
     class Meta:
         model = Country

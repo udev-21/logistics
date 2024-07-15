@@ -15,6 +15,7 @@ class LogisticsServiceImageSerializer(serializers.ModelSerializer):
 
 class LogisticsServiceSerializer(serializers.Serializer):
     id = serializers.IntegerField()
+    lan = serializers.SerializerMethodField()
     name = serializers.CharField(max_length=255)
     description = serializers.CharField()
     service_type = LogisticsServiceTypeSerializer(many=False, read_only=True)
@@ -25,7 +26,6 @@ class LogisticsServiceSerializer(serializers.Serializer):
     instagram = serializers.CharField()
     watsapp = serializers.CharField()
     image = serializers.ImageField()
-    lan = serializers.SerializerMethodField()
 
     class Meta:
         model = LogisticsService

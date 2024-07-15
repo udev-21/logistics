@@ -5,9 +5,9 @@ from apps.logistics_services.models.services import LogisticsServiceType
 
 class LogisticsServiceTypeSerializer(serializers.Serializer):
     id = serializers.IntegerField()
+    lan = serializers.SerializerMethodField()
     name = serializers.CharField(max_length=255)
     created_at = serializers.DateTimeField()
-    lan = serializers.SerializerMethodField()
 
     class Meta:
         model = LogisticsServiceType

@@ -6,9 +6,9 @@ from apps.container_announcements.models import ContainerFormType
 
 class ContainerFormTypeSerializer(serializers.Serializer):
     id = serializers.IntegerField()
+    lan = serializers.SerializerMethodField()
     name = serializers.CharField(max_length=255)
     created_at = serializers.DateTimeField()
-    lan = serializers.SerializerMethodField()
 
     class Meta:
         model = ContainerFormType

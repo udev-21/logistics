@@ -7,6 +7,7 @@ from phonenumber_field.serializerfields import PhoneNumberField
 
 class ContainerProviderSerializer(serializers.Serializer):
     id = serializers.IntegerField()
+    lan = serializers.SerializerMethodField()
     name = serializers.CharField(max_length=255)
     description = serializers.CharField()
     phone = PhoneNumberField()
@@ -15,7 +16,6 @@ class ContainerProviderSerializer(serializers.Serializer):
     instagram = serializers.CharField()
     watsapp = serializers.CharField()
     created_at = serializers.DateTimeField()
-    lan = serializers.SerializerMethodField()
 
     class Meta:
         model = ContainerProvider

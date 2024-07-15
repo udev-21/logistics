@@ -5,13 +5,13 @@ from .country import CountrySerializer
 
 class CitySerializer(serializers.Serializer):
     id = serializers.IntegerField()
+    lan = serializers.SerializerMethodField()
     name = serializers.CharField(max_length=255)
     created_at = serializers.DateTimeField()
 
     country = CountrySerializer(many=False, read_only=True)
 
     country_id = serializers.IntegerField(read_only=True, source="country.id")
-    lan = serializers.SerializerMethodField()
 
     class Meta:
         model = "City"
