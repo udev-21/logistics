@@ -64,7 +64,7 @@ class ContainerAnnouncement(TimeModelMixin):
     ]
 
     class Meta:
-        ordering = ["id", "created_at"]
+        ordering = ["schedule_date_from", "schedule_time_from"]
         db_table = "container_announcements"
         verbose_name = _("Container Announcement")
         verbose_name_plural = _("Container Announcements")

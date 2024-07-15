@@ -1,3 +1,4 @@
+from django.utils.translation import activate, get_language
 from rest_framework import serializers
 
 from apps.container_announcements.models import ContainerProvider
@@ -14,11 +15,13 @@ class ContainerProviderSerializer(serializers.Serializer):
     instagram = serializers.CharField()
     watsapp = serializers.CharField()
     created_at = serializers.DateTimeField()
+    lan = serializers.SerializerMethodField()
 
     class Meta:
         model = ContainerProvider
         fields = [
             "id",
+            "lan",
             "name",
             "description",
             "phone",
@@ -28,3 +31,11 @@ class ContainerProviderSerializer(serializers.Serializer):
             "watsapp",
             "created_at",
         ]
+
+    def get_lan(self, obj):
+        lan = self.context['request'].META.get('HTTP_LANG')
+        try:
+            activate(lan)
+        except:
+            pass
+        return get_language()

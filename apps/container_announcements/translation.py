@@ -4,12 +4,12 @@ from .models import *
 
 class AbstractNameTranslationOption(TranslationOptions):
     fields = ("name",)
-    required_languages = ("en", "uz", "ru")
+    required_languages = ("uz", "ru")
 
 
 class ContainerProviderTranslationOption(TranslationOptions):
     fields = ("name", "description")
-    required_languages = ("en", "uz", "ru")
+    required_languages = ("uz", "ru")
 
 
 translator.register(City, AbstractNameTranslationOption)

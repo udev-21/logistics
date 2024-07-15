@@ -1,3 +1,4 @@
+from django.utils.translation import activate, get_language
 from rest_framework import serializers
 from apps.logistics_services.models.services import LogisticsService, LogisticsServiceImage
 from api.logistics_services.serializers.logistics_service_types import (
@@ -24,11 +25,13 @@ class LogisticsServiceSerializer(serializers.Serializer):
     instagram = serializers.CharField()
     watsapp = serializers.CharField()
     image = serializers.ImageField()
+    lan = serializers.SerializerMethodField()
 
     class Meta:
         model = LogisticsService
         fields = [
             "id",
+            "lan",
             "name",
             "description",
             "service_type",
@@ -40,3 +43,11 @@ class LogisticsServiceSerializer(serializers.Serializer):
             "image",
             "created_at",
         ]
+
+    def get_lan(self, obj):
+        lan = self.context['request'].META.get('HTTP_LANG')
+        try:
+            activate(lan)
+        except:
+            pass
+        return get_language()

@@ -9,7 +9,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 
 class ContainerAnnouncementListView(generics.ListAPIView):
-    queryset = ContainerAnnouncement.objects.all()
+    queryset = ContainerAnnouncement.objects.order_by('schedule_date_from', 'schedule_time_from')
     serializer_class = ContainerAnnouncementSerializer
     pagination_class = PageNumberPagination
     filter_backends = [
