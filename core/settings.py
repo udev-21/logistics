@@ -46,9 +46,11 @@ INSTALLED_APPS = [
     "phonenumber_field",
     "rest_framework",
     "django_filters",
+    "django_crontab",
     # My apps
     "apps.container_announcements",
     "apps.logistics_services",
+    'apps.base'
 ]
 
 MIDDLEWARE = [
@@ -114,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "ru"
 
 TIME_ZONE = "UTC"
 
@@ -148,17 +150,19 @@ REST_FRAMEWORK = {
 gettext = lambda s: s
 
 LANGUAGES = (
-    ("en", gettext("English")),
     ("uz", gettext("Uzbek")),
     ("ru", gettext("Russian")),
 )
 
-MODELTRANSLATION_LANGUAGES = ("en", "ru", "uz")
-MODELTRANSLATION_DEFAULT_LANGUAGE = "en"
+MODELTRANSLATION_LANGUAGES = ("ru", "uz")
+MODELTRANSLATION_DEFAULT_LANGUAGE = "ru"
 
-MODELTRANSLATION_FALLBACK_LANGUAGES = ("en", "ru", "uz")
+MODELTRANSLATION_FALLBACK_LANGUAGES = ("ru", "uz")
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 TRACKING_API_SECRET = env("TRACKING_API_SECRET")
+CRONJOBS = [
+    ('* * * * *', 'apps.container_announcements.cron.check_container_announcement_status')
+]

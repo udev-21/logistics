@@ -15,7 +15,10 @@ class ContainerAnnouncementAdmin(admin.ModelAdmin):
         "provider",
         "schedule_date_from",
         "schedule_date_to",
+        "from_city",
+        "to_city",
         "shipping_type",
+        "status",
     ]
     list_display_links = [
         "id",
@@ -47,6 +50,7 @@ class ContainerAnnouncementAdmin(admin.ModelAdmin):
                     "container_type",
                     "container_form_type",
                     "shipping_type",
+                    "status",
 
                 )
             },

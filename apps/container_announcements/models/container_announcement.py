@@ -6,6 +6,10 @@ from apps.core.models import TimeModelMixin
 
 
 class ContainerAnnouncement(TimeModelMixin):
+    STATUS_CHOICES = (
+        (1, "Active"),
+        (0, "Draft"),
+    )
     provider = models.ForeignKey(
         "ContainerProvider",
         on_delete=models.PROTECT,
@@ -17,6 +21,7 @@ class ContainerAnnouncement(TimeModelMixin):
     schedule_date_to = models.DateField(_("Schedule Date To"))
     schedule_time_to = models.TimeField(_("Schedule Time To"))
     price = models.PositiveBigIntegerField(default=0)
+    status = models.IntegerField(choices=STATUS_CHOICES, default=1)
     currency = models.ForeignKey(
         Currency,
         on_delete=models.SET_NULL, blank=True, null=True,
